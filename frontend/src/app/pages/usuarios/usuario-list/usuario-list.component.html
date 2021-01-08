@@ -1,0 +1,206 @@
+<app-bread-crumb [items]="[{ text: 'Usuários' }]"></app-bread-crumb>
+
+<app-page-header
+  *ngIf="authService.hasRole('ROLE_ADMIN')"
+  page-title="Usuários"
+  button-text="Novo"
+  button-link="new"
+  button-class="botaonovo"
+  icon-class="fas fa-plus"
+></app-page-header>
+
+<div class="input-group mb-3 procurar-css">
+  <div class="input-group-prepend icon-grupo-pesquisar">
+    <span class="input-group-text" id="buscar">
+      <i class="fa fa-search fa-lg icon-pesquisar"></i
+    ></span>
+  </div>
+  <input
+    type="text"
+    class="form-control input-pesquisar"
+    placeholder="Pesquisar..."
+    aria-label="Pesquisar"
+    aria-describedby="buscar"
+    [(ngModel)]="palavra"
+    (keyup)="search()"
+  />
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-css">
+        <div class="card-header card-header-icon card-header-info">
+          <div class="card-icon">
+            <i class="material-icons">assignment</i>
+          </div>
+          <h2 class="card-title">Lista de Usuários</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead class="text-primary">
+                <tr>
+                  <th>Login</th>
+                  <th>Nome</th>
+                  <th>Cpf/CNPJ</th>
+                  <th>E-mail</th>
+                  <th class="acoes">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                  <td>
+                    {{ usuario.login }}
+                  </td>
+                  <td>
+                    {{ usuario.nome }}
+                  </td>
+                  <td>
+                    {{ usuario.cpfCnpj | cpfCnpj }}
+                  </td>
+                  <td>
+                    {{ usuario.email }}
+                  </td>
+                  <td class="acoes">
+                    <button
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Detalhe"
+                      data-toggle="modal"
+                      data-target="#usuarioModal"
+                      (click)="carregaUsuario(usuario)"
+                      class="btn btn-link btn-primary btn-just-icon search mr-2"
+                    >
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <a
+                      *ngIf="authService.hasRole('ROLE_ADMIN')"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Editar"
+                      [routerLink]="[usuario.id, 'edit']"
+                      class="btn btn-link btn-warning btn-just-icon edit mr-2"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                    <!-- <button
+                      *ngIf="authService.hasRole('ROLE_ADMIN')"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Remover"
+                      (click)="deleteResource(usuario)"
+                      class="btn btn-link btn-danger btn-just-icon remove"
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p-paginator
+              [rows]="size"
+              [totalRecords]="totalElementos"
+              (onPageChange)="paginate($event)"
+            ></p-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal"
+    id="usuarioModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modalcss" role="document">
+      <div style="border-radius: 4px" class="modal-content">
+        <div class="modal-header header-modal">
+          <h2 class="modal-title" id="exampleModalLabel">
+            Usuário - {{ usuarioSelecionado.nome }}
+          </h2>
+          <button
+            type="button"
+            class="close header-modal-close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span class="header-modal-close" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <table style="margin: 5px 5px" class="table">
+          <thead>
+            <tr>
+              <strong class="text-primary">Login:</strong>
+              {{
+                usuarioSelecionado.login
+              }}
+            </tr>
+            <tr>
+              <strong class="text-primary">Nome:</strong>
+              {{
+                usuarioSelecionado.nome
+              }}
+            </tr>
+            <tr>
+              <strong class="text-primary">Cpf/Cnpj:</strong>
+              {{
+                usuarioSelecionado.cpfCnpj | cpfCnpj
+              }}
+            </tr>
+            <tr>
+              <strong class="text-primary">E-mail:</strong>
+              {{
+                usuarioSelecionado.email
+              }}
+            </tr>
+            <tr>
+              <strong class="text-primary">Recebe E-mail:</strong>
+              {{
+                usuarioSelecionado.receberEmail ? "Sim" : "Não"
+              }}
+            </tr>
+          </thead>
+        </table>
+
+        <div
+          *ngIf="usuarioSelecionadoRoles.length > 0"
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <div class="card card-detalhe-css">
+            <div class="card-header card-header-icon card-header-info">
+              <div class="card-icon">
+                <i class="material-icons">assignment</i>
+              </div>
+              <h3 class="card-title">Lista de Roles</h3>
+            </div>
+            <div class="card-body">
+              <table
+                style="width: 100%; margin: 5px 5px"
+                class="table table-hover table-striped"
+              >
+                <thead class="text-primary">
+                  <tr>
+                    <th scope="col">Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let role of usuarioSelecionadoRoles">
+                    <td>{{ role.nome }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn botoes btn-sm" data-dismiss="modal">
+            <i class="fa fa-window-close"> Fechar</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

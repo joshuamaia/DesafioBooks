@@ -1,0 +1,22 @@
+.footer {
+  width: 100%;
+  background: #220b5e;
+  border-top: 2px solid #b0e2ff;
+  clear: both;
+  position: absolute;
+}
+
+.titulo {
+  font-size: 30px;
+  color: #fff;
+}
+
+label {
+  color: white !important;
+}
+
+@media (max-width: 576px) {
+  .titulo {
+    font-size: 18px;
+  }
+}

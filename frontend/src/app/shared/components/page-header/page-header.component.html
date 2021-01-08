@@ -1,0 +1,12 @@
+<div class="row mb-4">
+  <div class="col-md-9">
+    <h4 style="color: #191970" class="h4 border-left pl-2">
+      {{ pageTitle }}
+    </h4>
+  </div>
+  <div *ngIf="showButton" class="col-md-3 text-right">
+    <a [routerLink]="buttonLink" class="btn" [ngClass]="buttonClass">
+      <i [ngClass]="iconClass"> {{ buttonText }}</i>
+    </a>
+  </div>
+</div>

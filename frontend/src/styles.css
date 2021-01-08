@@ -1,0 +1,176 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ui-rating-icon {
+  font-size: 30px !important;
+  color: #9c27b0 !important;
+}
+
+.card .card-header.card-header-icon .card-title,
+.card .card-header.card-header-text .card-title {
+  margin-top: 15px;
+  color: #220b5e !important;
+}
+
+body .ui-picklist .ui-picklist-list .ui-picklist-item:hover {
+  color: #fff !important;
+  background-color: #220b5e !important;
+}
+
+label {
+  color: #9c27b0 !important;
+}
+
+.card .card-header-info .card-icon,
+.card .card-header-info .card-text,
+.card .card-header-info:not(.card-header-icon):not(.card-header-text),
+.card.bg-info,
+.card.card-rotate.bg-info .front,
+.card.card-rotate.bg-info .back {
+  background: #220b5e !important;
+}
+
+.icon-grupo-pesquisar {
+  background: #220b5e;
+  border-radius: 3px;
+}
+
+.procurar-css {
+  box-shadow: 0 0 3px 3px #220b5e !important;
+  background: #6a5acd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.ui-button {
+  background: #220b5e !important;
+}
+
+.ui-picklist .ui-picklist-list .ui-picklist-item.ui-state-highlight {
+  background-color: #220b5e !important;
+  color: #ffffff !important;
+}
+
+.icon-pesquisar,
+.input-pesquisar {
+  color: #b0e2ff !important;
+  border-radius: 4px !important;
+  padding: 5px !important;
+  font-size: 18px !important;
+  margin-left: 5px;
+}
+
+::-webkit-input-placeholder {
+  color: #fff !important;
+}
+:-moz-placeholder {
+  color: #fff !important;
+}
+
+::-moz-placeholder {
+  color: #fff !important;
+}
+
+:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.card-css {
+  box-shadow: 0 0 4px 4px #220b5e !important;
+}
+
+.bem-vindo-css {
+  color: #b0e2ff;
+}
+
+.card-detalhe-css {
+  box-shadow: 0 0 4px 4px #220b5e !important;
+  margin: 10px;
+  padding: 10px;
+}
+
+.modalcss {
+  border: 3px solid #220b5e !important;
+}
+
+.header-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #6a5acd !important;
+  border-bottom: 3px solid #220b5e !important;
+  color: white;
+}
+
+.header-modal-close {
+  color: white;
+}
+
+.upload {
+  width: 200px;
+  background: #8a2be2 !important;
+  border: 2px solid #8b008b !important;
+}
+
+.upload:hover {
+  width: 200px;
+  background: #8b008b !important;
+  border: 2px solid #8a2be2 !important;
+}
+
+.botoes-reprovar {
+  width: 200px;
+  background: #ff7f50 !important;
+  border: 2px solid #b22222 !important;
+}
+
+.botoes-reprovar:hover {
+  width: 200px;
+  background: #b22222 !important;
+  border: 2px solid #ff7f50 !important;
+}
+
+.botoes {
+  width: 200px;
+  background: #4169e1 !important;
+  border: 2px solid #220b5e !important;
+}
+
+.botoes:hover {
+  width: 200px;
+  background: #220b5e !important;
+  border: 2px solid #4169e1 !important;
+}
+
+.botoesradio {
+  margin: 5px !important;
+  color: #000 !important;
+}
+
+.botoesradiolabel {
+  color: #000 !important;
+}
+
+.botaonovo {
+  width: 140px;
+  background: #228b22 !important;
+  border: 2px solid #006400 !important;
+}
+
+.botaonovo:hover {
+  width: 140px;
+  background: #006400 !important;
+  border: 2px solid #228b22 !important;
+}

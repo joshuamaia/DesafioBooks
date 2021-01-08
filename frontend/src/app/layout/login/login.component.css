@@ -1,0 +1,53 @@
+.conteudo {
+  min-height: 68vh;
+  background: #f1f1f1;
+}
+
+.campos {
+  margin-top: 100px;
+}
+
+.inputplaceholder {
+  font-family: "Helvetica", FontAwesome, sans-serif;
+}
+
+.botoes {
+  width: 160px;
+  background: #4169e1 !important;
+  border: 2px solid #220b5e !important;
+}
+
+.botoes:hover {
+  width: 160px;
+  background: #220b5e !important;
+  border: 2px solid #4169e1 !important;
+}
+
+.header {
+  background: #220b5e !important;
+  border-bottom: 4px solid #6a5acd !important;
+  color: white;
+}
+
+.dados-acesso {
+  color: #220b5e !important;
+}
+
+.cardskin {
+  box-shadow: 0 0 4px 4px #220b5e !important;
+}
+
+::-webkit-input-placeholder {
+  color: #6a5acd !important;
+}
+:-moz-placeholder {
+  color: #6a5acd !important;
+}
+
+::-moz-placeholder {
+  color: #6a5acd !important;
+}
+
+:-ms-input-placeholder {
+  color: #6a5acd !important;
+}

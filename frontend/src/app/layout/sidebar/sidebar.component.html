@@ -1,0 +1,98 @@
+<div class="row no-gutters h-100" id="sidebar">
+  <div class="col-12">
+    <!-- Nombre del sitio, sacado de la confi -->
+    <div class="row no-gutters text-center block-logo">
+      <div class="col-12 p-0">
+        <span class="text-logo d-sm-none d-lg-inline-block ml-3 text-light"
+          ><i class="fa fa-book" aria-hidden="true"></i> Desafio Books</span
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <!-- Navbar -->
+        <nav class="navbar-dark navbar-expand-sm">
+          <button
+            class="navbar-toggler menu"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span> Menu
+          </button>
+
+          <div class="collapse navbar-collapse text-light" id="navbar">
+            <ul class="navbar-nav flex-column w-100">
+              <!-- Resumen -->
+              <li
+                class="nav-item"
+                [routerLink]="['/alterarsenha']"
+                routerLinkActive="router-link-active"
+              >
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fas fa-key"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span class="bem-vindo-css"
+                      >Bem vindo {{ nomeUsuario }}, (Alterar Senha)</span
+                    >
+                  </div>
+                </div>
+              </li>
+
+              <li
+                *ngIf="authService.hasRole('ROLE_ADMIN')"
+                class="nav-item"
+                [routerLink]="['/usuarios']"
+                routerLinkActive="router-link-active"
+              >
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-users"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>Usuários</span>
+                  </div>
+                </div>
+              </li>
+              <li
+                *ngIf="authService.hasRole('ROLE_BOOK')"
+                class="nav-item"
+                [routerLink]="['/livro']"
+                routerLinkActive="router-link-active"
+              >
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>Livros</span>
+                  </div>
+                </div>
+              </li>
+              <li
+                class="nav-item"
+                routerLinkActive="router-link-active"
+                (click)="logout()"
+              >
+                <div class="row no-gutters">
+                  <div class="col-md-2 col-sm-12 col-2 text-center p-1">
+                    <i class="fas fa-power-off"></i>
+                  </div>
+                  <div class="col-10 col-md-10 d-sm-none d-md-block p-1">
+                    <span>Sair</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

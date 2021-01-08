@@ -1,0 +1,71 @@
+.topo {
+  background: #220b5e;
+  background-size: 100% 100%;
+  border-bottom: 2px solid #b0e2ff;
+  height: 100px;
+  width: 100%;
+}
+
+.titulo {
+  font-size: 30px;
+  color: #fff;
+}
+
+.imagens-sic {
+  max-width: 70px;
+  height: auto;
+  margin-top: 18px;
+}
+
+.imagens-paraiba {
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 150px;
+  height: auto;
+}
+
+.sistemas {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.logomarca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-logo {
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 576px) {
+  .imagens-sic {
+    max-width: 40px;
+    height: auto;
+    margin-top: 1px;
+  }
+
+  .imagens-paraiba {
+    max-width: 90px;
+    height: auto;
+  }
+
+  .img-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .titulo {
+    font-size: 18px;
+  }
+
+  .topo {
+    background: #220b5e;
+    background-size: 100% 100%;
+    height: 180px;
+    width: 100%;
+  }
+}

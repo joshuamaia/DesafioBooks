@@ -1,0 +1,141 @@
+<app-bread-crumb
+  [items]="[{ text: 'Livros', link: '/livro' }, { text: pageTitle }]"
+></app-bread-crumb>
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="Voltar"
+  button-link="/livro"
+  button-class="botoes"
+  icon-class="fas fa-backward"
+></app-page-header>
+
+<form [formGroup]="resourceForm" (submit)="submitForm()">
+  <div class="card card-css">
+    <div class="card-header card-header-info card-header-icon">
+      <div class="card-icon">
+        <i class="fa fa-book" aria-hidden="true"></i>
+      </div>
+      <h2 class="card-title">Informações sobre o livro</h2>
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="usuario">Usuário: </label><br />
+          <strong id="usuario">{{ usuario?.nome }}</strong>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="nome"
+          />
+          <app-form-field-error
+            [form-control]="resourceForm.get('nome')"
+          ></app-form-field-error>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="nota">Nota</label>
+          <p-rating [cancel]="false" formControlName="nota"></p-rating>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <label for="autor">Autor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="autor"
+            formControlName="autor"
+          />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="ano">Ano</label>
+          <input
+            type="number"
+            class="form-control"
+            id="ano"
+            formControlName="ano"
+          />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="paginaAtual">Página Atual</label>
+          <input
+            type="number"
+            class="form-control"
+            id="paginaAtual"
+            formControlName="paginaAtual"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="dataInicio">Data Início Leitura</label>
+          <br />
+          <mat-form-field>
+            <input
+              style="width: 80%"
+              formControlName="dataInicio"
+              matInput
+              [matDatepicker]="pickerInicioPeriodo"
+              (click)="pickerInicioPeriodo.open()"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerInicioPeriodo"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicioPeriodo></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="dataFim">Data Fim Leitura</label>
+          <br />
+          <mat-form-field>
+            <input
+              style="width: 80%"
+              formControlName="dataFim"
+              matInput
+              [matDatepicker]="pickerFimPeriodo"
+              (click)="pickerFimPeriodo.open()"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerFimPeriodo"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerFimPeriodo></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="observacao">Observações</label>
+          <textarea
+            rows="6"
+            type="text"
+            class="form-control"
+            id="observacao"
+            formControlName="observacao"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages
+    [server-error-messages]="serverErrorMessages"
+  ></app-server-error-messages>
+
+  <button
+    *ngIf="authService.hasRole('ROLE_BOOK')"
+    [disabled]="resourceForm.invalid || enviando"
+    type="submit"
+    class="btn botoes float-right mt-3"
+  >
+    <i class="fas fa-floppy-o fa-lg"> Salvar</i>
+  </button>
+</form>

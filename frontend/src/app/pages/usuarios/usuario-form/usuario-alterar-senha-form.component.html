@@ -1,0 +1,109 @@
+<app-bread-crumb
+  [items]="[{ text: 'Usuários', link: '/usuarios' }, { text: pageTitle }]"
+></app-bread-crumb>
+
+<form [formGroup]="resourceForm" (submit)="submitForm()">
+  <div class="card card-css">
+    <div class="card-header card-header-info card-header-icon">
+      <div class="card-icon">
+        <i class="material-icons">contacts</i>
+      </div>
+      <h2 class="card-title">Informações sobre o usuário</h2>
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="login">Login</label>
+          <input
+            [readonly]="editando()"
+            type="text"
+            class="form-control"
+            id="login"
+            formControlName="login"
+          />
+          <app-form-field-error
+            [form-control]="resourceForm.get('login')"
+          ></app-form-field-error>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="senha">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="senha"
+            formControlName="senha"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="nome"
+          />
+          <app-form-field-error
+            [form-control]="resourceForm.get('nome')"
+          ></app-form-field-error>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+          <app-form-field-error
+            [form-control]="resourceForm.get('email')"
+          ></app-form-field-error>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="cpfCnpj">CPF/CNPJ</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cpfCnpj"
+            formControlName="cpfCnpj"
+          />
+          <app-form-field-error
+            [form-control]="resourceForm.get('cpfCnpj')"
+          ></app-form-field-error>
+        </div>
+
+        <div class="form-check col-md-2">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="receberEmail"
+              formControlName="receberEmail"
+            />
+            Receber E-mail
+            <span class="form-check-sign">
+              <span class="check"></span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages
+    [server-error-messages]="serverErrorMessages"
+  ></app-server-error-messages>
+
+  <button
+    [disabled]="resourceForm.invalid || enviando"
+    type="submit"
+    class="btn botoes float-right mt-3"
+  >
+    <i class="fa fa-floppy-o fa-lg"> Salvar</i>
+  </button>
+</form>

@@ -1,0 +1,15 @@
+<app-topo></app-topo>
+<div *ngIf="authService.isAuthenticated()" class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-sm-2 col-12 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- Dashboard -->
+    <div class="col-sm-10 col-12">
+      <app-dashboard></app-dashboard>
+    </div>
+  </div>
+</div>
+<app-login *ngIf="!authService.isAuthenticated()"></app-login>
+<app-rodape></app-rodape>
